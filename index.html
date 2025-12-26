@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Le Grimoire du Héros - JDR</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="notebook" class="notebook-container">
+        <div id="notebookHeader" class="notebook-header">
+            <h3>📔 Bloc-notes</h3>
+        </div>
+        <textarea id="noteArea" placeholder="Notez vos indices ici..." oninput="saveNote()"></textarea>
+    </div>
+
+    <header class="header">
+        <h1>⚔️ Le Grimoire du Héros (Livre-JDR) 🛡️</h1>
+    </header>
+
+    <main class="container">
+        
+        <section class="module character-sheet">
+            <h2>Fiche de Personnage</h2>
+
+            <div class="character-info">
+                <label>Nom : <input type="text" id="charName" onchange="updateCharInfo('name', this.value)"></label>
+                <label>Classe : <input type="text" id="charClass" onchange="updateCharInfo('class', this.value)"></label>
+            </div>
+
+            <div class="stats-dice-grid">
+                <div class="stats-table">
+                    <h3>Statistiques Actuelles</h3>
+                    <button onclick="toggleStatDescriptions()" class="help-button">Aide sur les Stats</button>
+                    <table id="stats-table"></table>
+                </div>
+
+                <div class="dice-roller">
+                    <h3>Lanceur de Dé (D6)</h3>
+                    <div class="dice-btn-group">
+                        <button onclick="lancerDe(6, 'normal')">Dé 6</button>
+                        <button onclick="lancerDe(6, 'chance')" id="chanceRollButton">Jet de Chance</button>
+                    </div>
+                    
+                    <div class="dice-animation-area">
+                        <div id="diceCube" class="dice-cube">
+                            <span id="diceFace">?</span>
+                        </div>
+                    </div>
+                    
+                    <p id="resultatTexte">Résultat : <span id="resultatDe">?</span></p>
+                    <p id="chanceMessage" class="message"></p>
+                    
+                    <div class="dice-history-container">
+                        <h4>Historique</h4>
+                        <button onclick="clearDiceHistory()" class="clear-history-btn">Effacer</button> 
+                        <ul id="diceHistoryList"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="statDescriptions" class="description-box hidden"></div>
+        </section>
+
+        <section class="module equipment">
+            <h2>⚔️ Équipement (Bonus)</h2>
+            <form id="equipment-form">
+                <input type="text" id="equipmentName" placeholder="Nom de l'arme/armure" required>
+                <input type="number" id="equipmentQuantity" value="1" min="1" style="width: 50px;">
+                <input type="text" id="equipmentBonus" placeholder="Ex: +3 HAB, +1 ARM">
+                <button type="submit">Ajouter</button>
+            </form>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Nom</th><th>Qté</th><th>Bonus</th><th>Action</th></tr>
+                </thead>
+                <tbody id="equipment-list"></tbody>
+            </table>
+        </section>
+
+        <section class="module inventory">
+            <h2>📦 Inventaire (Objets)</h2>
+            <form id="inventory-form">
+                <input type="text" id="itemName" placeholder="Nom de l'objet" required>
+                <input type="number" id="itemQuantity" value="1" min="1" style="width: 50px;">
+                <input type="text" id="itemDescription" placeholder="Description">
+                <button type="submit">Ajouter</button>
+            </form>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Nom</th><th>Qté</th><th>Description</th><th>Action</th></tr>
+                </thead>
+                <tbody id="inventory-list"></tbody>
+            </table>
+        </section>
+
+        <section class="module npcs">
+            <h2>👥 Personnages Croisés (PNJ)</h2>
+            <form id="npc-form">
+                <input type="text" id="npcName" placeholder="Nom" required>
+                <textarea id="npcDescription" placeholder="Description..." rows="2"></textarea>
+                <button type="submit">Ajouter</button>
+            </form>
+            <div id="npc-list" class="npc-cards-container"></div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+:root {
+    --color-dark-parchment: #4e3a29;
+    --color-parchment: #f4e9d7;
+    --color-gold: #daa520;
+    --color-border: #6d5b4e;
+    --color-dark-bg: #1c1c1c;
+    --color-danger: #a00;
+    --color-success: #3c763d;
+}
+
+body {
+    font-family: 'Cinzel', serif;
+    background: var(--color-dark-bg);
+    color: var(--color-parchment);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.header {
+    background: var(--color-dark-parchment);
+    color: var(--color-gold);
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 5px solid var(--color-gold);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.module {
+    background: rgba(48, 38, 31, 0.85);
+    border: 3px solid var(--color-border);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2, h3 {
+    color: var(--color-gold);
+    text-align: center;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Boutons */
+button {
+    background-color: var(--color-dark-parchment);
+    color: var(--color-gold);
+    border: 2px solid var(--color-gold);
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+    white-space: nowrap; 
+}
+
+button:hover {
+    background-color: var(--color-gold);
+    color: var(--color-dark-bg);
+}
+
+.help-button {
+    display: block;
+    margin: 10px auto;
+    width: fit-content;
+    font-size: 0.8em;
+    padding: 5px 10px;
+}
+
+/* Fiche Personnage */
+.character-info {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--color-border);
+}
+.character-info label {
+    margin: 0 10px;
+}
+
+.character-info input {
+    background: none;
+    border: 1px solid var(--color-gold);
+    color: var(--color-parchment);
+    padding: 5px;
+    width: 150px;
+}
+
+.stats-dice-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.stats-table {
+    flex: 2;
+}
+
+.dice-roller {
+    flex: 1;
+    text-align: center;
+    border: 2px solid var(--color-border);
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Tables de données (Stats, Inventaire) */
+.data-table, #stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.data-table th, .data-table td, #stats-table th, #stats-table td {
+    border: 1px solid var(--color-border);
+    padding: 8px;
+    text-align: left;
+}
+
+.data-table th, #stats-table th {
+    background-color: var(--color-dark-parchment);
+    color: var(--color-gold);
+}
+
+.stat-value-base input {
+    width: 50px;
+    background: none;
+    color: inherit;
+    border: none;
+    text-align: center;
+    padding: 0;
+}
+
+.stat-value-total {
+    font-weight: bold;
+    color: var(--color-gold);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Lanceur de Dés */
+.dice-result {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--color-gold);
+    margin-top: 10px;
+}
+
+#resultatDe {
+    display: inline-block;
+    min-width: 40px;
+    text-align: center;
+    border: 2px solid var(--color-gold);
+    padding: 5px 10px;
+    background-color: var(--color-dark-parchment);
+    border-radius: 5px;
+}
+.message {
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+/* Formulaires */
+#equipment-form input, #inventory-form input, #npc-form input, #npc-form textarea {
+    padding: 8px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-dark-parchment);
+    color: var(--color-parchment);
+    flex-grow: 1;
+}
+
+#equipment-form, #inventory-form, #npc-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+/* Descriptions des Stats (Aide) */
+.description-box {
+    background: rgba(78, 58, 41, 0.9);
+    border: 2px dashed var(--color-gold);
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* Correction du bouton Retirer */
+.data-table td:last-child {
+    text-align: center; 
+}
+
+.delete-btn {
+    background: var(--color-danger);
+    color: white;
+    border: none;
+    padding: 3px 6px;
+    line-height: 1;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #d00;
+}
+
+/* PNJs */
+.npc-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.npc-card {
+    background: var(--color-dark-parchment);
+    border: 2px solid var(--color-border);
+    padding: 15px;
+    flex-basis: calc(50% - 15px);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.npc-card h4 {
+    color: var(--color-gold);
+    margin-top: 0;
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: 5px;
+}
+
+/* --- Styles pour le Dé Simulé et l'Animation Naturelle --- */
+
+.dice-animation-area {
+    height: 80px;
+    width: 80px;
+    margin: 20px auto 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.dice-cube {
+    width: 70px;
+    height: 70px;
+    background: #f4e9d7; 
+    color: #1c1c1c; 
+    border: 3px solid var(--color-gold);
+    border-radius: 10px; /* Base carrée avec coins arrondis */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    /* Transition pour l'arrêt doux et pour la transformation rond/carré */
+    transition: transform 0.1s linear, border-radius 0.3s ease-in-out; 
+}
+
+/* NOUVEAU KEYFRAMES : Rotation simple et rapide sans oscillation complexe */
+@keyframes simple-roll {
+    from { transform: rotate(0deg) scale(1); }
+    to { transform: rotate(360deg) scale(1); }
+}
+
+/* CLASSE CLÉ : Transforme en cercle pendant l'animation */
+.dice-cube.rolling {
+    border-radius: 50%; /* Devient rond */
+    animation: simple-roll 0.1s infinite linear; /* Rotation constante */
+    transform: rotate(0deg); /* Réinitialisation pour l'animation */
+}
+
+/* Style pour l'historique des dés */
+.dice-history-container {
+    margin-top: 20px;
+    border-top: 1px dashed var(--color-border);
+    padding-top: 10px;
+    text-align: left;
+    position: relative; 
+}
+
+.dice-history-container h4 {
+    color: var(--color-parchment);
+    font-size: 0.9em;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Style du bouton d'effacement de l'historique */
+.clear-history-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    font-size: 0.7em;
+    background: #6d5b4e;
+    color: var(--color-parchment);
+    border-color: var(--color-parchment);
+}
+
+.clear-history-btn:hover {
+    background: var(--color-danger);
+    color: white;
+}
+
+#diceHistoryList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 100px;
+    overflow-y: auto; 
+    font-size: 0.8em;
+    color: #c4b9a1;
+    margin-top: 10px; 
+    padding-top: 5px;
+}
+
+#diceHistoryList li {
+    padding: 2px 0;
+}
+
+.dice-history-success {
+    color: var(--color-success);
+    font-weight: bold;
+}
+
+.dice-history-fail {
+    color: var(--color-danger);
+    font-weight: bold;
+}
+.hidden {
+    display: none;
+}
+
+
+
+/* --- Style du Bloc-notes Redimensionnable --- */
+.notebook-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 250px;
+    height: 300px; /* Hauteur initiale de base */
+    background: rgba(78, 58, 41, 0.95);
+    border: 2px solid var(--color-gold);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    
+    /* ACTIVATION DU REDIMENSIONNEMENT MANUEL */
+    resize: both; 
+    overflow: hidden; /* Nécessaire pour que resize fonctionne */
+    min-width: 150px;
+    min-height: 150px;
+}
+
+.notebook-header {
+    padding: 10px;
+    background: rgba(48, 38, 31, 0.9);
+    cursor: move;
+    border-bottom: 1px solid var(--color-gold);
+    user-select: none;
+    flex-shrink: 0; /* Empêche le header de s'écraser */
+}
+
+.notebook-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+    pointer-events: none;
+}
+
+#noteArea {
+    flex-grow: 1;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--color-parchment);
+    font-family: inherit;
+    font-size: 0.9em;
+    resize: none; /* On désactive le resize du textarea lui-même */
+    outline: none;
+    padding: 10px;
+    line-height: 1.5;
+    
+    /* RÉACTIVATION DU SCROLL interne si le texte dépasse la taille choisie */
+    overflow-y: auto; 
+    
+    background-image: linear-gradient(rgba(218, 165, 32, 0.1) 1px, transparent 1px);
+    background-size: 100% 1.5em;
+    box-sizing: border-box;
+}
+
+/* Style de la scrollbar pour rester dans l'ambiance RPG */
+#noteArea::-webkit-scrollbar {
+    width: 8px;
+}
+#noteArea::-webkit-scrollbar-thumb {
+    background: var(--color-gold);
+    border-radius: 4px;
+}
